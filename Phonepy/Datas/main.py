@@ -25,7 +25,7 @@ SELECT = option_menu(
 
 if SELECT == 'Home':
     col1, col2 = st.columns(2)
-    col1.image('PhonePe-APK.png', width=350)
+    col1.image('D:/Desktop/Projects/Phonepy/Datas/PhonePe-APK.png', width=350)
     with col1:
         st.video('https://www.youtube.com/watch?v=OfXbp7hPno0')
         st.download_button('Download the app', 'https://www.phonepe.com/app-download/')
