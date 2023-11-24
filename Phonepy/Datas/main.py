@@ -2,13 +2,10 @@
 import mysql.connector
 import pandas as pd
 import streamlit as st
-import PIL 
 from PIL import Image
 from streamlit_option_menu import option_menu
 import plotly.express as px
 import plotly.graph_objects as go
-import requests
-import json
 import folium
 from streamlit_folium import folium_static
 import matplotlib.pyplot as plt
