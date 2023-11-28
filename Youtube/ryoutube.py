@@ -286,77 +286,77 @@ if channels_details is not None:
         csr.close()
         db.close()
 
-# # Fetching datas from MySQL and display them
-# if channels_details is not None:
-#     qdb = pymysql.connect(
-#     host="localhost",
-#     user="root",
-#     password="Samy@1007",
-#     database="ryoutube"
-#     )
+# Fetching datas from MySQL and display them
+if channels_details is not None:
+    qdb = pymysql.connect(
+    host="localhost",
+    user="root",
+    password="Samy@1007",
+    database="ryoutube"
+    )
 
-#     cursor = qdb.cursor()
+    cursor = qdb.cursor()
 
-#     cursor.execute('select c.channel_name, v.video_name, v.video_id from channels c join playlist p on c.channel_id = p.channel_id join videos v on p.playlist_id = v.playlist_id ')
-#     channel_video_id = cursor.fetchall()
+    cursor.execute('select c.channel_name, v.video_name, v.video_id from channels c join playlist p on c.channel_id = p.channel_id join videos v on p.playlist_id = v.playlist_id ')
+    channel_video_id = cursor.fetchall()
 
-#     cursor.execute('select channel_name, channel_id,channel_videos from channels order by channel_view desc limit 1')
-#     most_viewed_videos = cursor.fetchall()
+    cursor.execute('select channel_name, channel_id,channel_videos from channels order by channel_view desc limit 1')
+    most_viewed_videos = cursor.fetchall()
 
-#     cursor.execute('select  c.channel_id, v.video_name, v.video_id from channels c join playlist p on c.channel_id = p.channel_id join videos v on p.playlist_id = v.playlist_id  order by v.view_count desc limit 10')
-#     top10_most_viewed_video = cursor.fetchall()
+    cursor.execute('select  c.channel_id, v.video_name, v.video_id from channels c join playlist p on c.channel_id = p.channel_id join videos v on p.playlist_id = v.playlist_id  order by v.view_count desc limit 10')
+    top10_most_viewed_video = cursor.fetchall()
 
-#     cursor.execute('select  v.comment_count, v.video_name from channels c join playlist p on c.channel_id = p.channel_id join videos v on p.playlist_id = v.playlist_id  order by v.comment_count desc')
-#     comment_counts_on_each_video = cursor.fetchall()
+    cursor.execute('select  v.comment_count, v.video_name from channels c join playlist p on c.channel_id = p.channel_id join videos v on p.playlist_id = v.playlist_id  order by v.comment_count desc')
+    comment_counts_on_each_video = cursor.fetchall()
 
-#     cursor.execute('select  v.video_id, v.video_name, c.channel_id, v.like_count from channels c join playlist p on c.channel_id = p.channel_id join videos v on p.playlist_id = v.playlist_id  order by v.like_count desc limit 1')
-#     highest_liked_video = cursor.fetchall()
+    cursor.execute('select  v.video_id, v.video_name, c.channel_id, v.like_count from channels c join playlist p on c.channel_id = p.channel_id join videos v on p.playlist_id = v.playlist_id  order by v.like_count desc limit 1')
+    highest_liked_video = cursor.fetchall()
 
-#     cursor.execute('select  like_count, view_count, video_name  from videos order by like_count desc, view_count desc')
-#     most_liked_viewed_videos = cursor.fetchall()
+    cursor.execute('select  like_count, view_count, video_name  from videos order by like_count desc, view_count desc')
+    most_liked_viewed_videos = cursor.fetchall()
 
-#     cursor.execute('select channel_name, channel_view from channels order by channel_view desc')
-#     channel_views = cursor.fetchall()
+    cursor.execute('select channel_name, channel_view from channels order by channel_view desc')
+    channel_views = cursor.fetchall()
 
-#     cursor.execute('select v.year, v.video_name from channels c join playlist p on c.channel_id = p.channel_id join videos v on p.playlist_id = v.playlist_id  where v.year = 2022')
-#     video_published_at_2022 = cursor.fetchall()
+    cursor.execute('select v.year, v.video_name from channels c join playlist p on c.channel_id = p.channel_id join videos v on p.playlist_id = v.playlist_id  where v.year = 2022')
+    video_published_at_2022 = cursor.fetchall()
 
-#     cursor.execute('select distinct c.channel_name, round(avg(v.duration_int),0) as average_watch_hours from channels c join playlist p on c.channel_id = p.channel_id join videos v on p.playlist_id = v.playlist_id  group by c.channel_name')
-#     channel_average_watch_hours = cursor.fetchall()
+    cursor.execute('select distinct c.channel_name, round(avg(v.duration_int),0) as average_watch_hours from channels c join playlist p on c.channel_id = p.channel_id join videos v on p.playlist_id = v.playlist_id  group by c.channel_name')
+    channel_average_watch_hours = cursor.fetchall()
 
-#     cursor.execute('select v.video_name, v.comment_count, c.channel_name from channels c join playlist p on c.channel_id = p.channel_id join videos v on p.playlist_id = v.playlist_id  order by v.comment_count desc limit 1')
-#     hightest_comments_video_name = cursor.fetchall()
+    cursor.execute('select v.video_name, v.comment_count, c.channel_name from channels c join playlist p on c.channel_id = p.channel_id join videos v on p.playlist_id = v.playlist_id  order by v.comment_count desc limit 1')
+    hightest_comments_video_name = cursor.fetchall()
 
 
-#     #     # Define a dictionary of questions and answers
-#     dict = {
-#         " ":"",
-#         "What are the names of all the videos and their corresponding channels? ": channel_video_id,
-#         "Which channels have the most number of videos, and how many videos do they have? ": most_viewed_videos,
-#         "What are the top 10 most viewed videos and their respective channels": top10_most_viewed_video,
-#         "How many comments were made on each video, and what are theircorresponding video names? ": comment_counts_on_each_video,
-#         "Which videos have the highest number of likes, and what are their corresponding channel names?": highest_liked_video,
-#         "What is the total number of likes and dislikes for each video, and what aretheir corresponding video names?": most_liked_viewed_videos,
-#         "What is the total number of views for each channel, and what are their corresponding channel names?":channel_views,
-#         "What are the names of all the channels that have published videos in the year 2022?":video_published_at_2022,
-#         "What is the average duration of all videos in each channel, and what are their corresponding channel names?":channel_average_watch_hours,
-#         "Which videos have the highest number of comments, and what are their corresponding channel names?":hightest_comments_video_name
-#     }
+    #     # Define a dictionary of questions and answers
+    dict = {
+        " ":"",
+        "What are the names of all the videos and their corresponding channels? ": channel_video_id,
+        "Which channels have the most number of videos, and how many videos do they have? ": most_viewed_videos,
+        "What are the top 10 most viewed videos and their respective channels": top10_most_viewed_video,
+        "How many comments were made on each video, and what are theircorresponding video names? ": comment_counts_on_each_video,
+        "Which videos have the highest number of likes, and what are their corresponding channel names?": highest_liked_video,
+        "What is the total number of likes and dislikes for each video, and what aretheir corresponding video names?": most_liked_viewed_videos,
+        "What is the total number of views for each channel, and what are their corresponding channel names?":channel_views,
+        "What are the names of all the channels that have published videos in the year 2022?":video_published_at_2022,
+        "What is the average duration of all videos in each channel, and what are their corresponding channel names?":channel_average_watch_hours,
+        "Which videos have the highest number of comments, and what are their corresponding channel names?":hightest_comments_video_name
+    }
 
-#     # Create a dropdown list of questions
-#     selected_question = st.selectbox("Select a question", list(dict.keys()))
+    # Create a dropdown list of questions
+    selected_question = st.selectbox("Select a question", list(dict.keys()))
 
-#     # Display the selected question
-#     st.write("Selected Question :  ", selected_question)
+    # Display the selected question
+    st.write("Selected Question :  ", selected_question)
 
-#     # Display the corresponding answer based on the selected question
-#     if selected_question in dict:
-#         selected_answer = list(dict[selected_question])
-#         answer = pd.DataFrame(selected_answer)
-#         st.write("Answer:", answer)
+    # Display the corresponding answer based on the selected question
+    if selected_question in dict:
+        selected_answer = list(dict[selected_question])
+        answer = pd.DataFrame(selected_answer)
+        st.write("Answer:", answer)
     
-#     cursor.close()
-#     qdb.close()
+    cursor.close()
+    qdb.close()
     
 
 
