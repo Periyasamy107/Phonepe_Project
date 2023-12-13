@@ -58,7 +58,7 @@ if SELECT == 'Barchart':
             st.bar_chart(data=df, x = 'district', y='transaction_amount')
 
 
-        json1 = 'D:\\Desktop\\Projects\\Phonepe\\Datas\\Miscellaneous\\states_india.geojson'
+        json1 = 'D:\\Desktop\\Projects\\Phonepy\\Datas\\Miscellaneous\\states_india.geojson'
         mapp = folium.Map(location=[23.47,77.94], tiles='CartoDB positron', name='Light map',
                         zoom_start=5, attr = 'my data attribution')
         choice = ['transaction_amount']
@@ -74,7 +74,7 @@ if SELECT == 'Barchart':
             line_opacity = 10,
             legend_name = choice_selected
         ).add_to(mapp)
-        folium.features.GeoJson('D:\\Desktop\\Projects\\Phonepe\\Datas\\Miscellaneous\\states_india.geojson',
+        folium.features.GeoJson('D:\\Desktop\\Projects\\Phonepy\\Datas\\Miscellaneous\\states_india.geojson',
                                 name='state', popup = folium.features.GeoJsonPopup(fields=['st_nm'])).add_to(mapp)
         folium_static(mapp, width=700, height = 650)
 
@@ -91,7 +91,7 @@ if SELECT == 'Barchart':
             st.subheader('Top 10 transaction based on state wise')
             st.bar_chart(data=df, x = 'state', y='transaction_amount')
 
-        json1 = 'D:\\Desktop\\Projects\\Phonepe\\Datas\\Miscellaneous\\states_india.geojson'
+        json1 = 'D:\\Desktop\\Projects\\Phonepy\\Datas\\Miscellaneous\\states_india.geojson'
         mapp = folium.Map(location=[23.47,77.94], tiles='CartoDB positron', name='Light map',
                         zoom_start=5, attr = 'my data attribution')
         choice = ['transaction_amount']
@@ -107,7 +107,7 @@ if SELECT == 'Barchart':
             line_opacity = 10,
             legend_name = choice_selected
         ).add_to(mapp)
-        folium.features.GeoJson('D:\\Desktop\\Projects\\Phonepe\\Datas\\Miscellaneous\\states_india.geojson',
+        folium.features.GeoJson('D:\\Desktop\\Projects\\Phonepy\\Datas\\Miscellaneous\\states_india.geojson',
                                 name='state', popup = folium.features.GeoJsonPopup(fields=['st_nm'])).add_to(mapp)
         folium_static(mapp, width=700, height = 650)
 
@@ -129,7 +129,7 @@ if SELECT == 'Barchart':
             st.pyplot(plt)
 
         df = df['registered_user'].astype('int64')
-        json1 = 'D:\\Desktop\\Projects\\Phonepe\\Datas\\Miscellaneous\\states_india.geojson'
+        json1 = 'D:\\Desktop\\Projects\\Phonepy\\Datas\\Miscellaneous\\states_india.geojson'
         mapp = folium.Map(location=[23.47,77.94], tiles='CartoDB positron', name='Light map',
                         zoom_start=5, attr = 'my data attribution')
         choice = ['registered_user']
@@ -145,7 +145,7 @@ if SELECT == 'Barchart':
             line_opacity = 10,
             legend_name = choice_selected
         ).add_to(mapp)
-        folium.features.GeoJson('D:\\Desktop\\Projects\\Phonepe\\Datas\\Miscellaneous\\states_india.geojson',
+        folium.features.GeoJson('D:\\Desktop\\Projects\\Phonepy\\Datas\\Miscellaneous\\states_india.geojson',
                                 name='state', popup = folium.features.GeoJsonPopup(fields=['st_nm'])).add_to(mapp)
         folium_static(mapp, width=700, height = 650)
 
@@ -167,7 +167,7 @@ if SELECT == 'Barchart':
             st.pyplot(plt)
 
         df = df['registered_user'].astype('int64')
-        json1 = 'D:\\Desktop\\Projects\\Phonepe\\Datas\\Miscellaneous\\states_india.geojson'
+        json1 = 'D:\\Desktop\\Projects\\Phonepy\\Datas\\Miscellaneous\\states_india.geojson'
         mapp = folium.Map(location=[23.47,77.94], tiles='CartoDB positron', name='Light map',
                         zoom_start=5, attr = 'my data attribution')
         choice = ['registered_user']
@@ -183,7 +183,7 @@ if SELECT == 'Barchart':
             line_opacity = 10,
             legend_name = choice_selected
         ).add_to(mapp)
-        folium.features.GeoJson('D:\\Desktop\\Projects\\Phonepe\\Datas\\Miscellaneous\\states_india.geojson',
+        folium.features.GeoJson('D:\\Desktop\\Projects\\Phonepy\\Datas\\Miscellaneous\\states_india.geojson',
                                 name='state', popup = folium.features.GeoJsonPopup(fields=['st_nm'])).add_to(mapp)
         folium_static(mapp, width=700, height = 650)
 
